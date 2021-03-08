@@ -178,7 +178,7 @@ class DCT():
                 return bytes(messageBits[len(str(messSize))+1:])
                 # return ''.join(messageBits)[len(str(messSize))+1:]
 
-        return ''
+        return b''
       
     """Helper function to 'stitch' new image back together"""
     def chunks(self,l, n):

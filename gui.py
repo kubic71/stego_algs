@@ -198,6 +198,7 @@ def extractData():
     rightImage['image'] = rphoto
     rphoto.image = rphoto
 
+    print(len(raw))
 
     if extractContentType.get() == "Plain text":
         extractStatusLbl.configure(text="Success")
@@ -367,7 +368,7 @@ extractContentType.set(choices[0]) # default value
 def onExtractContentTypeChange(*args):
     if extractContentType.get() == "File":
         outputTexArea.grid_forget()
-        textLbl.grid_forget()
+        extractedDataLbl.grid_forget()
         extractToLabel.grid(column=0, row=2, sticky=tk.NW)
         extractToSelectBtn.grid(column=0, row=3, sticky=tk.NW)
 
@@ -375,7 +376,7 @@ def onExtractContentTypeChange(*args):
         extractToLabel.grid_forget()
         extractToSelectBtn.grid_forget()
         outputTexArea.grid(column=0, row=3, sticky=tk.N)
-        textLbl.grid(column=0, row=2, sticky=tk.W)
+        extractedDataLbl.grid(column=0, row=2, sticky=tk.W)
 
 
 extractTypeMenu = OptionMenu(TAB3, extractContentType, *choices, command=onExtractContentTypeChange)
@@ -389,9 +390,6 @@ def selectExtractToFile():
     extractToLabel.config(text="Extract to: " + extractToFilename)
 
 extractToSelectBtn = Button(TAB3, text="Select file", command=selectExtractToFile) 
-
-textLbl.grid(column=0, row=2, sticky=tk.W)
-
 
 extractAlgo = StringVar(TAB3)
 extractAlgo.set(OPTIONS[0]) # default value
@@ -409,8 +407,8 @@ extractStatusLbl.grid(column=3, row=0, sticky=tk.W)
 eImage = Label(TAB3)
 eImage.grid(column=0, row=1)
 
-textLbl = Label(TAB3, text="Extracted Data") 
-textLbl.grid(column=0, row=2, sticky=tk.W)
+extractedDataLbl = Label(TAB3, text="Extracted Data") 
+extractedDataLbl.grid(column=0, row=2, sticky=tk.W)
 
 #Input Text Area
 outputTexArea = Text(TAB3, height=20, width=40)
