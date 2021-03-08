@@ -1,0 +1,5 @@
+blowfish
+scikit-image
+docopt
+opencv-python
+
