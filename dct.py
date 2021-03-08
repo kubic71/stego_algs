@@ -42,9 +42,10 @@ class DCT():
         row,col = img.shape[:2]
         self.oriRow, self.oriCol = row, col  
 
-        if((col/8)*(row/8)<len(secret)):
+        if((col/8)*(row/8)/3 < len(self.message)):
             print("Error: Message too large to encode in image")
             return      
+        
         
         #cv2.imshow('g',gray)
         #cv2.imshow('i', img2)
@@ -66,6 +67,7 @@ class DCT():
         #break into 8x8 blocks
         imgBlocks = [np.round(bImg[j:j+8, i:i+8]-128) for (j,i) in itertools.product(range(0,row,8),
                                                                        range(0,col,8))]
+
         #print(imgBlocks[1][0])
         #Blocks are run through DCT function
         dctBlocks = [np.round(cv2.dct(img_Block)) for img_Block in imgBlocks]
@@ -97,6 +99,7 @@ class DCT():
             if letterIndex == 8:
                 letterIndex = 0
                 messIndex = messIndex + 1
+
                 if messIndex == len(self.message):
                     break
         
