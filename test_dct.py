@@ -10,10 +10,9 @@ en = DCT(in_img)
 en.DCTEn(msg, out_img)
 
 dec = DCT(out_img)
-secret  = dec.DCTDe()
+secret  = dec.DCTDe().decode()
 
 print(secret)
-print(type(secret))
 
 
 
